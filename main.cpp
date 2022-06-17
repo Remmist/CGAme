@@ -241,7 +241,7 @@ int main() {
     PullOfCreatures.emplace_back(1,"Soml","The creature lives in coastal areas, a distinctive feature is a transparent bag of water in the belly area",
                                        100,30,40, false,"Spitting high pressure hot water");
     PullOfCreatures.emplace_back(6,"Weld","The creature lives near iron mines, outwardly looks like a metal box.",
-                                       200,40,0, false,"Сan collect metal from the ground and turning into metal spears to dream them into an enemy");
+                                       200,40,0, false,"Can collect metal from the ground and turning into metal spears to dream them into an enemy");
     PullOfCreatures.emplace_back(4,"Flame","The creature appears in places of large fires, looks like a cat, but with burning ears and a tail, leaves burning traces in the form of a cat's paw.",
                                        100,25,80, true,"Creates a wall of high-temperature fire, impervious to attacks");
     PullOfCreatures.emplace_back(3,"Golubs","A creature that lives in the upper atmosphere, looks like a large hawk, but the color of the plumage is white and blue",
