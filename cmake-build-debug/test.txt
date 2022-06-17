@@ -1,0 +1,23 @@
+test 1 4
+Buldyga 1 0 200 20 10
+Soml 11 50 250 120 50
+Weld 1 0 200 40 0
+Flame 1 0 100 25 80
+Golubs 1 0 200 35 70
+Blibles 1 0 100 35 50
+Skwork
+Skwork
+Skwork
+Skwork
+Icetle
+Kvarbos
+Flame
+Buldyga
+Magnis
+Albatr
+Soml
+Icetle
+Flame
+Skwork
+Weld
+Bit
