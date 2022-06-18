@@ -17,6 +17,11 @@ static int battlecounter = 0;
 
 void HeroCreateChoseCreatures(std::vector<Creature>&);
 
+/**
+ * Ta metoda wyświetla informacje o wybranym stworzeniu i pozwala wybrać następną akcję z tym stworem.
+ * @param creature Wybrane stworzenie
+ * @param HerosCreatures wektor, w który należy zapisać to stworzenie
+ */
 void chosenCreature(Creature &creature, std::vector<Creature> &HerosCreatures){
     creature.info();
     std::cout << "1)Add to Hero" << std::endl;
@@ -42,6 +47,11 @@ void chosenCreature(Creature &creature, std::vector<Creature> &HerosCreatures){
     }
 }
 
+
+/**
+ * Ta metoda resetuje wszystkie wybrane stworzenia w głównym Pull'ie stworzeń
+ * Jest to potrzebne do generowania przeciwników.
+ */
 void resetPull(){
     std::for_each(PullOfCreatures.begin(), PullOfCreatures.end(), [](Creature &creature){
         if(creature.isChosen())
@@ -49,6 +59,11 @@ void resetPull(){
     });
 }
 
+
+/**
+ * Ta metoda wyświetla listę wszystkich stworzeń dostępnych do wyboru w drużynie gracza.
+ * @param HerosCreatures wektor gracza, który jest przekazany dalej
+ */
 void HeroCreateChoseCreatures(std::vector<Creature> &HerosCreatures){
     std::vector<Creature> AvCreatures;
     int c = 1;
@@ -72,6 +87,12 @@ void HeroCreateChoseCreatures(std::vector<Creature> &HerosCreatures){
     }
 }
 
+
+/**
+ * Ta metoda generuje wektor z wrogimi stworzeniami.
+ * Powtórzenia stworzeń są dozwolone.
+ * @return zwraca zgenerowany wektor
+ */
 std::vector<Creature> generateEnemyPull(){
     std::vector<Creature> pull;
     for(int i = 0; i < 4; i++)
@@ -79,6 +100,11 @@ std::vector<Creature> generateEnemyPull(){
     return pull;
 }
 
+
+/**
+ * Ta metoda odpowiada za stworzenie gracza, jeśli została wybrana opcja nowej gry.
+ * @return zwara nowego gracza
+ */
 Hero CreateHero(){
     std::string HeroName;
     std::vector<Creature> HerosCreatures;
@@ -104,6 +130,10 @@ Hero CreateHero(){
     return hero;
 }
 
+
+/**
+ * Ta metoda odpowiada za odczytanie pliku zapisu, który został zapisany w określonym formacie.
+ */
 void readSave(){
     std::cout << "Enter save name" << std::endl;
     std::string saveName;
@@ -189,6 +219,9 @@ void readSave(){
 }
 
 
+/**
+ * Główna metoda odpowiadająca za rozpoczęcie i zakończenie gry.
+ */
 void startGame(){
     std::cout << "Welcome to the CreaturesWorld!" << std::endl;
     std::cout << "Choose action:" << std::endl;

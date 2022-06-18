@@ -1,4 +1,4 @@
-test 1 4
+test 1 1
 Buldyga 1 0 200 20 10
 Soml 11 50 250 120 50
 Weld 1 0 200 40 0

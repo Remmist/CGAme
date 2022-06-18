@@ -27,6 +27,7 @@ Battle::Battle(const Hero &hero, const Enemy &enemy, int id) : hero(hero), enemy
         AllCreatures.at(i).setChosen(true);
     }
     resetAllCreatures();
+    ConfigEnemy();
 }
 
 void Battle::start() {
@@ -41,7 +42,6 @@ void Battle::start() {
         if(!alive || isBattleend())
             break;
         for(int i = 0; i < 2; i++){
-            saveProgress();
             if(i == 0)
                 PlayerTurn();
             if(i == 1)
@@ -635,10 +635,10 @@ void Battle::EnemyTurn() {
 }
 
 void Battle::evoEnemy(Creature &creature) {
-    creature.setDamage(creature.getDamage() + 10);
-    creature.setAgility(creature.getAgility() + 10);
-    creature.setExp(creature.getExp() - 100);
-    std::cout << "Enemy " << creature.getName() << " was evoluted!" << std::endl;
+        creature.setDamage(creature.getDamage() + 10);
+        creature.setAgility(creature.getAgility() + 10);
+        creature.setExp(creature.getExp() - 100);
+        creature.setLvl(creature.getLvl() + 1);
 }
 
 void Battle::superAttackEnemy(std::vector<Creature> &vec, int poz, int cel) {
@@ -700,12 +700,14 @@ void Battle::resetAllCreatures() {
     std::for_each(ActiveCreatures.begin(), ActiveCreatures.end(), [](Creature &creature){
         creature.setHp(creature.getMaxhp());
         creature.setAgility(creature.getMaxAbility());
+        creature.setDamage(creature.getMaxDamage());
         creature.setUsesOfSPower(2);
         creature.setAlive(true);
     });
     std::for_each(AllCreatures.begin(), AllCreatures.end(), [](Creature &creature){
         creature.setHp(creature.getMaxhp());
         creature.setAgility(creature.getMaxAbility());
+        creature.setDamage(creature.getMaxDamage());
         creature.setUsesOfSPower(2);
         creature.setAlive(true);
     });
@@ -746,4 +748,40 @@ bool Battle::isContinueBattle() const {
 
 const Hero &Battle::getHero() const {
     return hero;
+}
+
+void Battle::ConfigEnemy() {
+    if(id == 2){
+        std::vector<Creature> crs;
+        std::for_each(enemy.getCreatures().begin(), enemy.getCreatures().end(), [&crs](Creature creature){
+            crs.push_back(creature);
+        });
+        std::for_each(crs.begin(), crs.end(), [this](Creature &creature){
+            for(int i = 0; i < 2; i++)
+                evoEnemy(creature);
+        });
+        enemy.setCreatures(crs);
+    }
+    if(id == 3){
+        std::vector<Creature> crs;
+        std::for_each(enemy.getCreatures().begin(), enemy.getCreatures().end(), [&crs](Creature creature){
+            crs.push_back(creature);
+        });
+        std::for_each(crs.begin(), crs.end(), [this](Creature &creature){
+            for(int i = 0; i < 4; i++)
+                evoEnemy(creature);
+        });
+        enemy.setCreatures(crs);
+    }
+    if(id == 4){
+        std::vector<Creature> crs;
+        std::for_each(enemy.getCreatures().begin(), enemy.getCreatures().end(), [&crs](Creature creature){
+            crs.push_back(creature);
+        });
+        std::for_each(crs.begin(), crs.end(), [this](Creature &creature){
+            for(int i = 0; i < 6; i++)
+                evoEnemy(creature);
+        });
+        enemy.setCreatures(crs);
+    }
 }

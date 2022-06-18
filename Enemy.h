@@ -9,14 +9,22 @@
 #include <vector>
 
 class Enemy {
+
     std::vector<Creature> creatures;
 
-
 public:
+    /**
+     * Konstruktor ten pozwala na stworzenie przeciwnika dla gracza,
+     * który będzie zawierał wektor stworzeń, z którymi gracz będzie walczył.
+     * @param creatures wektor stworzeń
+     */
     Enemy(const std::vector<Creature> &creatures);
 
-    const std::vector<Creature> &getCreatures() const;
 
+    /*
+     * Zwykły zestaw getterów i setterów.
+     */
+    const std::vector<Creature> &getCreatures() const;
     void setCreatures(const std::vector<Creature> &creatures);
 
 };
