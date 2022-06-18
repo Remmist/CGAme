@@ -26,7 +26,6 @@ Battle::Battle(const Hero &hero, const Enemy &enemy, int id) : hero(hero), enemy
         ActiveCreatures.push_back(AllCreatures.at(i));
         AllCreatures.at(i).setChosen(true);
     }
-    resetAllCreatures();
     ConfigEnemy();
 }
 
@@ -112,7 +111,7 @@ void Battle::PlayerTurn() {
         else
             inf = "Unconscious";
         if (creature.getExp() >= 100)
-            update = "LVL UP AVAIVABLE!";
+            update = "LVL UP AVAILABLE!";
         else
             update = "";
         std::cout << c << ")" << creature.getName() << "(lvl " << creature.getLvl() << ")" << " - " << inf << " "
@@ -135,7 +134,7 @@ void Battle::PlayerTurn() {
             CreatureChoose(ActiveCreatures.at(input - 1));
             break;
         default:
-            std::cout << "Bad option!" << std::endl;
+            std::cout << "There is no such option!" << std::endl;
             start();
             break;
     }
@@ -160,7 +159,7 @@ void Battle::CreatureChoose(Creature &creature) {
                 PlayerTurn();
                 break;
             default:
-                std::cout << "Bad option!" << std::endl;
+                std::cout << "There is no such option!" << std::endl;
                 CreatureChoose(creature);
                 break;
         }
@@ -196,7 +195,7 @@ void Battle::CreatureChoose(Creature &creature) {
             PlayerTurn();
             break;
         default:
-            std::cout << "Bad option!" << std::endl;
+            std::cout << "There is no such option!" << std::endl;
             CreatureChoose(creature);
             break;
     }
@@ -224,17 +223,17 @@ void Battle::evoCreature(Creature &creature) {
                 case 1:
                     creature.setMaxDamage(creature.getMaxDamage() + 10);
                     creature.setDamage(creature.getMaxDamage());
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
                 case 2:
                     creature.setMaxAbility(creature.getMaxAbility() + 10);
                     creature.setAgility(creature.getMaxAbility());
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
                 default:
                     creature.setMaxAbility(creature.getMaxAbility() + 10);
                     creature.setAgility(creature.getMaxAbility());
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
             }
             break;
@@ -251,17 +250,17 @@ void Battle::evoCreature(Creature &creature) {
             switch (input3) {
                 case 1:
                     creature.setMaxhp(creature.getMaxhp() + 15);
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
                 case 2:
                     creature.setMaxAbility(creature.getMaxAbility() + 10);
                     creature.setAgility(creature.getMaxAbility());
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
                 default:
                     creature.setMaxAbility(creature.getMaxAbility() + 10);
                     creature.setAgility(creature.getMaxAbility());
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
             }
             break;
@@ -279,20 +278,20 @@ void Battle::evoCreature(Creature &creature) {
                 case 1:
                     creature.setMaxDamage(creature.getMaxDamage() + 10);
                     creature.setDamage(creature.getMaxDamage());
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
                 case 2:
                     creature.setMaxhp(creature.getMaxhp() + 15);
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
                 default:
                     creature.setMaxhp(creature.getMaxhp() + 15);
-                    std::cout << creature.getName() << " was succesfully evoluted!" << std::endl;
+                    std::cout << creature.getName() << " was successfully evoluted!" << std::endl;
                     break;
             }
             break;
         default:
-            std::cout << "Bad option!" << std::endl;
+            std::cout << "There is no such option!" << std::endl;
             evoCreature(creature);
             break;
     }
@@ -311,7 +310,7 @@ void Battle::replaceCreature(Creature &creature) {
     int input;
     std::cin >> input;
     if(input > c-1 || input < 1){
-        std::cout << "Bad option!" << std::endl;
+        std::cout << "There is no such option!" << std::endl;
         replaceCreature(creature);
         return;
     }
@@ -339,7 +338,7 @@ void Battle::attackCreature(Creature &creature) {
     int input;
     std::cin >> input;
     if(input > c-1 || input < 1){
-        std::cout << "Bad option!" << std::endl;
+        std::cout << "There is no such option!" << std::endl;
         attackCreature(creature);
         return;
     }
@@ -360,7 +359,7 @@ void Battle::attackCreature(Creature &creature) {
             superPowerAttack(creature, const_cast<Creature &>(enemy.getCreatures().at(input - 1)));
             break;
         default:
-            std::cout << "Bad option!" << std::endl;
+            std::cout << "There is no such option!" << std::endl;
             attackCreature(creature);
             break;
     }
@@ -399,7 +398,7 @@ void Battle::normalAttack(Creature &myCreature, Creature &en) {
     }
     en.setHp(en.getHp() - myCreature.getDamage() * factorTypes(myCreature,en));
     myCreature.setExp(myCreature.getExp() + 50);
-    std::cout << "Succesful attack!" << std::endl;
+    std::cout << "Successful attack!" << std::endl;
     std::cout << "Your " << myCreature.getName() << " received 50 EXP" << std::endl;
     std::cout << "Enemy " << en.getName() << " took "<< myCreature.getDamage() * factorTypes(myCreature,en) << " damage" << std::endl;
     if(en.getHp() <= 0){
@@ -456,7 +455,7 @@ void Battle::superPowerAttack(Creature &creature, Creature &en) {
         en.setHp(en.getHp() - (creature.getDamage()*creature.getMnsPower()*factorTypes(creature,en)));
         creature.setExp(creature.getExp() + 100);
         creature.setUsesOfSPower(creature.getUsesOfSPower() - 1);
-        std::cout << "Succesful attack!" << std::endl;
+        std::cout << "Successful attack!" << std::endl;
         std::cout << "Your " << creature.getName() << " received 100 EXP" << std::endl;
         std::cout << "Enemy " << en.getName() << " took "<< creature.getDamage()*creature.getMnsPower()*factorTypes(creature,en) << " damage" << std::endl;
         std::cout << "Your " << creature.getName() << " has " << creature.getUsesOfSPower() << " super attacks left." << std::endl;

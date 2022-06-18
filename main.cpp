@@ -35,13 +35,13 @@ void chosenCreature(Creature &creature, std::vector<Creature> &HerosCreatures){
                 if(creature.getName() == cr.getName())
                     cr.setChosen(true);
             });
-            std::cout << "Succesfully added!" << std::endl;
+            std::cout << "Successfully added!" << std::endl;
             break;
         case 2:
             HeroCreateChoseCreatures(HerosCreatures);
             break;
         default:
-            std::cout << "There is no such variation!" << std::endl;
+            std::cout << "There is no such option!" << std::endl;
             chosenCreature(creature, HerosCreatures);
             break;
     }
@@ -78,7 +78,7 @@ void HeroCreateChoseCreatures(std::vector<Creature> &HerosCreatures){
     int in;
     std::cin >> in;
     if(in > c-1 || in < 1){
-        std::cout << "Bad option!" << std::endl;
+        std::cout << "There is no such option!" << std::endl;
         HeroCreateChoseCreatures(HerosCreatures);
         return;
     } else{
@@ -215,7 +215,24 @@ void readSave(){
         readSave();
         return;
     }
-    std::cout << "Save was suc readed!" << std::endl;
+    std::cout << "Save was successful readed!" << std::endl;
+}
+
+
+/**
+ * Metoda ta odpowiada za wyświetlenie krótkiego opisu gry przed jej rozpoczęciem.
+ */
+void gameRules(){
+    std::cout << "Welcome to the CreaturesWorld!" << std::endl;
+    std::cout << "This is a turn based combat game. Your task is to defeat enemy creatures with your brave team of creatures!" << std::endl;
+    std::cout << "To do this, you need to pump and pay attention to the events of the battle." << std::endl;
+    std::cout << "Each of the creatures has certain characteristics, such as agility, health, damage, and more." << std::endl;
+    std::cout << "Creatures also have different elements, such as water, fire, earth, air, ice and steel." << std::endl;
+    std::cout << "Each of these elements in one way or another acts on other elements, both to the best and to the worst." << std::endl;
+    std::cout << "Battles take place in a 4v4 format, where your creatures must defeat the enemy! There are 4 total rounds in the game." << std::endl;
+    std::cout << "A creature can evolve after reaching EXP 100" << std::endl;
+    std::cout << "As a player, you can have 6 different creatures with completely different stats, it's all up to you!" << std::endl;
+    std::cout << "Beat, upgrade, change, evolve, have fun!" << std::endl;
 }
 
 
@@ -247,6 +264,7 @@ void startGame(){
             break;
         case 2:
             MainHero = CreateHero();
+            gameRules();
             for(int i = 0; i < 4; i++){
                 battlecounter++;
                 Battle battle = Battle(MainHero,MainHero.getEnemys().at(i), battlecounter);

@@ -42,7 +42,7 @@ public:
     /**
      * Ta metoda jest odpowiedzialna za resetowanie wszystkich cech stworzeń
      * do ich standardów, zgodnie z poziomem i cechami,
-     * które gracz pompował podczas gry.
+     * które gracz ulepszał podczas gry.
      */
     void resetAllCreatures();
 
