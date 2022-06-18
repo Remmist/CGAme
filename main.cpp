@@ -158,6 +158,9 @@ void readSave(){
                     newCr.setMaxhp(hp);
                     newCr.setMaxDamage(damage);
                     newCr.setMaxAbility(agil);
+                    newCr.setHp(newCr.getMaxhp());
+                    newCr.setDamage(newCr.getMaxDamage());
+                    newCr.setAgility(newCr.getMaxAbility());
                     creatures.push_back(newCr);
                     break;
                 }
